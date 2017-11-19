@@ -1,0 +1,21 @@
+
+--Count the number of blank lines in a text file, by using accumulators
+
+val file = sc.textFile("file:///home/cloudera/Desktop/Acadgild/Assignment_21_1/sample")
+
+val blankLines = sc.accumulator(0,"Blank Lines")
+val NblankLines = sc.accumulator(0,"Non Blank Lines")
+
+val fileRDD = file.foreach(line => {
+
+if(line.length() ==0)
+blankLines +=1
+
+else
+NblankLines +=1
+
+})
+
+println("Number of Blank Lines : "+ blankLines)
+
+println("Number of Non Blank Lines : "+ NblankLines)
